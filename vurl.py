@@ -234,7 +234,7 @@ def parse_input(input_str):
 
 def main():
     parser = argparse.ArgumentParser(usage="visit-filter.py [POSITIONAL...] [OPTIONS...]")
-    parser.add_argument('option', choices=['check', 'to-visit', 'start', 'filter-visited', 'filter-not-visited', 'update', 'mark-all-visited'], help='Select the mode to run the program.')
+    parser.add_argument('option', choices=['add', 'to-visit', 'start', 'filter-visited', 'filter-not-visited', 'update', 'mark-all-visited'], help='Select the mode to run the program.')
     parser.add_argument('--target', help='Specify target name')
     parser.add_argument('-u', '--url', type=parse_input, help='Specify URL to perform action.')
     parser.add_argument('--smart-add', help="Specify a smart add of url file. Asks user it want to add all not visited urls to urls_to_visit file.", action="store_true")
@@ -254,7 +254,7 @@ def main():
         create_targets_path(f"./{target_dir}")
         if target is not None:
             create_target_history_file(target, f"./{target_dir}")
-    elif option == 'check':
+    elif option == 'add':
         if not url_filter.islist:
             url_filter.check_if_visited(url)
         else:
