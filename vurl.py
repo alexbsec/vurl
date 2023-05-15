@@ -245,7 +245,9 @@ def main():
 
     url_filter = Filter(url, f"./{target_dir}", target)
 
-    if target is None or (url is None and (option != 'update' and option != 'mark-all-visited' and option != 'start')):
+    dont_prompt_error_if = ["update", "mark-all-visit", "start", "to-visit"]
+
+    if target is None or (url is None and (option not in dont_prompt_error_if)):
         print("[ERR] URL and/or target not passed")
         parser.print_help()
         exit(0)
